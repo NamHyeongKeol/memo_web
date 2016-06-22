@@ -1,0 +1,12 @@
+<ul class="labels">
+  <!--li class="list-group-item" ng-click="initLabel()" ng-class="{labelBold: 0 == selectedLabel}"><span class="badge">{{notesNumber}}</span>All</li>
+  <li class="list-group-item" ng-repeat="x in labels track by $index" ng-click="changeLabel(x)" ng-class="{labelBold: x.eid==selectedLabel}"><span class="badge">{{x.item}}<>>/span><i class="fa fa-tag" aria-hidden="true"></i> {{x.name}}</li-->
+  <li class="label" style="list-style-type: none"><h4>전체 ({{ memos.count }})</h4></li>
+  <% if !@labels[0].nil? %>
+    <% @labels.each do |l| %>
+      <li class="label" style="list-style-type: none" ng-click="selectLabel(<%= l.id %>)">
+        <p style="margin:none;">라벨<%= l.name %> (<%= l.memos.count %>)</p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

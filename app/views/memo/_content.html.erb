@@ -1,0 +1,13 @@
+<!--input type="text" class="form-control" id="memo_title" placeholder="제목을 적어주세요" ng-model="title" ng-readonly="read_mode" ng-click="formChangeEdit()">
+<textarea class="form-control" id="memo_content" row="6" placeholder="Contents input" ng-model="content" ng-readonly="read_mode" ng-click="formChangeEdit()"></textarea>
+<p ng-model="updatedAt" ng-show="editMode">Last Updated: {{updatedAt}}</p><br>
+            <button class="btn btn-default" id="editNoteButton" ng-click="editNote()" ng-show="editMode" ng-disabled="formReadonly"><i class="fa fa-floppy-o" aria-hidden="true"></i> Edit</button> <button class="btn btn-danger" id="deleteNoteButton"  ng-click="deleteNote()" ng-show="editMode"><i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i> Delete</button>
+                        <button class="btn btn-primary" ng-click="changeCreateMode()" ng-show="editMode" id="newNoteModeButton"><i class="fa fa-reply" aria-hidden="true"></i> New Memo</button> <button class="btn btn-primary" id="newNoteButton" ng-click="newNote()" ng-hide="editMode"><i class="fa fa-check" aria-hidden="true"></i> Create</button-->
+
+<input type="text" class="form-control" id="memo_title" placeholder="제목을 적어주세요" ng-model="title" ng-readonly="read_mode" ng-click="formChangeEdit()">
+<textarea class="form-control" id="memo_content" row="6" placeholder="Contents input" ng-model="content" ng-readonly="read_mode" ng-click="formChangeEdit()"></textarea>
+<p ng-model="updated_at" ng-show="edit_mode">Last Updated: {{updated_at}}</p><br>
+            <button class="btn btn-default" id="edit_button" ng-click="edit_memo()" ng-show="editMode" ng-disabled="read_mode"><i class="fa fa-floppy-o" aria-hidden="true"></i> Edit</button> <button class="btn btn-danger" id="delete_utton"  ng-click="deleteNote()" ng-show="editMode"><i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i> Delete</button>
+                        <button class="btn btn-primary" ng-click="changeCreateMode()" ng-show="edit_mode" id="newNoteModeButton"><i class="fa fa-reply" aria-hidden="true"></i> New Memo</button> <button class="btn btn-primary" id="create_button" ng-click="newNote()" ng-hide="editMode"><i class="fa fa-check" aria-hidden="true"></i> Create</button>
+
+222

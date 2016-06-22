@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'memo#index'
+
   get 'memo/index'
+  get 'memo/select'
+  get 'memo/show'
+  post 'memo/create'
 
 #  get 'page/index' => 'index'
 #  post 'notes/create'

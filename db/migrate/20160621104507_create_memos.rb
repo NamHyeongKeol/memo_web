@@ -4,7 +4,8 @@ class CreateMemos < ActiveRecord::Migration
 
       t.timestamps null: false
 
-
+      t.string :title, null: false, default: ""
+      t.text :content, null: false, default: ""
     end
   end
 end

@@ -1,3 +1,23 @@
 // Place all the styles related to the memo controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.labels .label {
+  color: black;
+
+}
+
+.memos .memo {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.memos {
+  border-bottom: 1px solid black;
+  padding-left: 0;
+}
+
+.memos .memo h4 {
+  margin-bottom: 0;
+}

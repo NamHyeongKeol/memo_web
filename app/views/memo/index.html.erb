@@ -1,12 +1,32 @@
-<div class="col-md-2" id="labels">
-  <%= render :partial 'labels' %>
+<div class="col-md-2" id="labels_container">
+  <%= render partial: '/memo/labels' %>
 </div>
 <div class="col-md-3" id="memos">
-  <%= render :partial 'memos' %>
+  <%= render partial: '/memo/memos' %>
 </div>
 <div class="col-md-6" id="content">
-  <%= render :partial 'content' %>
+  <%= render partial: '/memo/content' %>
 </div>
 <div class="col-md-1"></div>
 
-
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope, $http, $rootScope, $window) {
+    $scope.selectLabel = function(label_id) {
+      $http.({method: "GET", url: "/memo/select", params: {label_id: label_id}})
+      .success(function(data, status, headers, config) {
+        if(data.eid == -2){
+          $scope.alertMsg = "label name should be unique";
+        }else if(data.eid != -1){ // if valid
+          var label_idx;
+          label_idx = findLabelIndexById(data.eid);
+          $scope.labels[label_idx].name = data.name;
+          setShowLabel(null,data.name);
+          $scope.alertMsg = "label name is changed successfully";
+          $scope.changingLabelName = "";
+        }else{
+          $scope.alertMsg = "length of label should be 1~15";
+        };
+    };
+  });
+</script>
