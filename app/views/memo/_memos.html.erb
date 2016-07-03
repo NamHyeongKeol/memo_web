@@ -1,13 +1,11 @@
-<ul class="memos">
+<ul class="memos" ng-init="initialize('<%= @labels %>', '<%= @memos %>')">
   <% if !@memos[0].nil? %>
-    <% @memos.each do |m| %>
-      <li class="memo" style="list-style-type: none">
-        <p><%= m.title %></p>
-        <p style="margin: auto;"><%= m.content %></p>
-        <p style="margin: auto;">작성 <%= m.created_at %></p>
-        <p style="margin: auto;">최종수정 <%= m.updated_at %></p>
-      </li>
-    <% end %>
+    <li class="memo" style="list-style-type: none" ng-repaet="x in memos | orderBy:'eid' track by $index">
+      <p><%= m.title %></p>
+      <p style="margin: auto;"><%= m.content %></p>
+      <p style="margin: auto;">작성 <%= m.created_at.to_s(:db) %></p>
+      <p style="margin: auto;">최종수정 <%= m.updated_at.to_s(:db) %></p>
+    </li>
   <% else %>
     <li class="memo" style="list-style-type: none"><h4>메모가 없습니다.</h4></li>
   <% end %>

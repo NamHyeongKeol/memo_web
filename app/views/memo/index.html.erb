@@ -13,20 +13,26 @@
   var app = angular.module('myApp', []);
   app.controller('myCtrl', function($scope, $http, $rootScope, $window) {
     $scope.selectLabel = function(label_id) {
-      $http.({method: "GET", url: "/memo/select", params: {label_id: label_id}})
-      .success(function(data, status, headers, config) {
-        if(data.eid == -2){
+      $.ajax({
+        method: "GET",
+        url: "/memo/select",
+        data: { label_id: label_id },
+        dataType: "json"
+      }).success(function(data, status, headers, config) {
+        if(data.eid == -1){
           $scope.alertMsg = "label name should be unique";
-        }else if(data.eid != -1){ // if valid
-          var label_idx;
-          label_idx = findLabelIndexById(data.eid);
-          $scope.labels[label_idx].name = data.name;
-          setShowLabel(null,data.name);
-          $scope.alertMsg = "label name is changed successfully";
-          $scope.changingLabelName = "";
-        }else{
-          $scope.alertMsg = "length of label should be 1~15";
+        } else { // valid
+          var label_id = data.label_id;
+          $scope.memos = data.memos;
+          data.memos.forEach(function (element) {console.log(element)}, this);
+//          var label_idx;
+//          label_idx = findLabelIndexById(data.eid);
+//          $scope.labels[label_idx].name = data.name;
+//          setShowLabel(null,data.name);
+//          $scope.alertMsg = "label name is changed successfully";
+//          $scope.changingLabelName = "";
         };
-    };
+      });
+    }
   });
 </script>
